@@ -1,0 +1,106 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+  <body>
+  	{% if hh %}
+  	<h1>Search Result Of...</h1>
+    <h2>{{s_input}}</h2>
+
+	    <p><b>{{s_input}} House</b>, founded by {{hi[1]}}, is one of four Houses in Hogwarts. </p>
+	    <p> The color of {{s_input}} is {{hi[3]}}, and the ghost is {{hi[0]}}. </p>
+	    <p> Currently, professor <b>{{hbi[0]}}</b> is the head of {{s_input}}. </p>
+	    
+	    {% if hq %}
+	    <p> Players in {{s_input}}'s Quidditch Team:
+	    	<table>
+	    		{% for row in qi %}
+	    		<tr> <td>--{{row[3]}}, {{row[2]}}, from {{row[0]}} to {{row[1]}} </td> </tr>
+	    		{% endfor %}
+	    	</table>
+	    </p>
+	    {% endif %}
+
+	    {% if hhead %}
+	    <p> About {{hbi[0]}}:
+	    	<table>
+	    		<tr> <td>--Date of birth: </td> <td> {{hbi[1]}} </td> </tr>
+	    		<tr> <td>--Date joining Hogwarts: </td> <td> {{hfi[0]}} </td> </tr>
+	    		<tr> <td>--Blood Status: </td> <td>{{hbi[2]}}</td> </tr>
+	    		<tr> <td>--Gender: </td> <td>{{hbi[3]}}</td> </tr>
+	    	</table>	
+	    </p>
+	    {% endif %}
+
+	    {% if hh %}
+	    <p>House Basic Information:</p>
+	    <table>
+	    	<tr>
+	    		{% for n in hi %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	    {% endif %}
+
+	    {% if hq %}
+	    <p>Quidditch Player Information:</p>
+	    <table>
+	    	<tr>
+	    		{% for n in qi %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	    {% endif %}
+
+	    {% if hhead %}
+	    <p>Head Information (date of joining Hogwarts):</p>
+	    <table>
+	    	<tr>
+	    		{% for n in hfi %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+
+	    <p>Head Information (basic information):</p>
+	    <table>
+	    	<tr>
+	    		{% for n in hbi %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	    {% endif %}
+
+
+
+    {% else %}
+    	<h1>Sorry... No Information Found</h1>
+  	{% endif %}
+
+	<!-- Search Part -->
+	<!-- <p>Choose a type and search!</p> -->
+	<!-- <form method="POST" action="/search"> -->
+	  <p> 
+	    <select name="search_type">
+	      <option value=1>Character</option>
+	      <option value=2>Class</option>
+	      <option value=3>House</option>
+	      <option value=4>Textbook</option>
+	      <option value=5>Location</option>
+	    </select>
+	    <input type="text" name="name"> <input type="submit" value="Search!"> 
+	  </p>
+	</form>
+
+
+	</body>
+
+
+</html>

@@ -1,0 +1,80 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+  <body>
+  	{% if ht %}
+  	<h1>Search Result Of...</h1>
+    <h2>{{s_input}}</h2>
+
+    <p><b><i>{{s_input}}</i></b> is a book written by {{ti[2]}}. The ISBN number of this book is {{ti[0]}}.
+    </p>
+
+    {% if hc %}
+    <p>In Hogwarts, this book is used as textbook in course <b>{{ci[0]}}</b>.
+    </p>
+    {% endif %}
+
+    {% if hc %}
+    <p>About {{ci[0]}}:
+    	<table>
+    		<tr> <td>--Department:</td> <td>{{ci[1]}}</td> </tr>
+    		<tr> <td>--Classroom:</td> <td>{{ci[2]}}</td> </tr>
+    	</table>
+
+    </p>
+    {% endif %}
+
+
+
+    {% if ht %}
+	    <p>Textbook Basic Information:</p>
+	    <table>
+	    	<tr>
+	    		{% for n in ti %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	{% endif %}
+
+	{% if hc %}
+	    <p>Class Information:</p>
+	    <table>
+	    	<tr>
+	    		{% for n in ci %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	{% endif %}
+
+
+    {% else %}
+    	<h1>Sorry... No Information Found</h1>
+  	{% endif %}
+
+	<!-- Search Part -->
+	<!-- <p>Choose a type and search!</p> -->
+	<!-- <form method="POST" action="/search"> -->
+	  <p> 
+	    <select name="search_type">
+	      <option value=1>Character</option>
+	      <option value=2>Class</option>
+	      <option value=3>House</option>
+	      <option value=4>Textbook</option>
+	      <option value=5>Location</option>
+	    </select>
+	    <input type="text" name="name"> <input type="submit" value="Search!"> 
+	  </p>
+	</form>
+
+
+	</body>
+
+
+</html>

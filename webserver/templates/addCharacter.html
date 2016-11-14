@@ -1,0 +1,30 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+{% if bd[3] == 'female' %}
+  {% set s_input_pron = 'She' %}
+  {% set s_input_pp = 'Her' %}
+{% else %}
+  {% set s_input_pron = 'He' %}
+  {% set s_input_pp = 'His' %}
+{% endif %}
+
+<body>
+  {% if hbi %}
+  <h1>Search Result Of...</h1>
+    <h2>{{s_input}}</h2>
+
+    <table>
+      <tr><td>Date of Birth:</td><td>{{bd[1]}}</td></tr>
+      <tr><td>Blood Status:</td><td>{{bd[2]}}</td></tr>
+      <tr><td>Gender:</td><td>{{bd[3]}}</td></tr>
+    </table>
+    
+</body>
+
+</html>

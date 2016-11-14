@@ -1,0 +1,468 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+<body>
+  <h1>Harry Potter Database</h1>
+
+  <br>
+  <h2>Searching for Records</h2>
+<p>Choose a type and search!</p>
+<form method="POST" action="/search"> 
+  <p> 
+    <select name="search_type">
+      <option value=1>Character</option>
+      <option value=2>Class</option>
+      <option value=3>House</option>
+      <option value=4>Textbook</option>
+      <option value=5>Location</option>
+    </select>
+    <input type="text" name="name"> <input type="submit" value="Search!"> 
+  </p>
+</form>
+
+<h2>Deleting Records</h2>
+<fieldset>
+<p>Delete a Character</p>
+<p> Enter Character ID to delete</p>
+<form method="POST" action="/deleteCharacter"> 
+  <p> 
+    <input type="text" name="uid"> 
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+<fieldset>
+<p>Delete a Member of Faculty</p>
+<p> Enter Character ID to delete</p>
+<form method="POST" action="/deleteFaculty"> 
+  <p> 
+    <input type="text" name="uid"> 
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+<fieldset>
+<p>Delete a Student</p>
+<p> Enter Character ID to delete</p>
+<form method="POST" action="/deleteStudent"> 
+  <p> 
+    <input type="text" name="uid"> 
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+<fieldset>
+<p>Delete a Textbook</p>
+<p> Enter an ISBN to delete</p>
+<form method="POST" action="/deleteTextbook"> 
+  <p> 
+    <input type="text" name="isbn"> 
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+ <fieldset>
+<p>Delete a Class</p>
+<p> Enter a class name to delete</p>
+<form method="POST" action="/deleteClass"> 
+  <p> 
+    <input type="text" name="name"> 
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+
+ <fieldset>
+<p>Delete a Place</p>
+<p> Enter a Place name to delete</p>
+<form method="POST" action="/deletePlace"> 
+  <p> 
+    <input type="text" name="name"> 
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+<fieldset>
+<p>Delete a Player</p>
+
+<form method="POST" action="/deletePlayer"> 
+  <p> 
+    <p> Date Started</p>
+    <input type="date" name="h_from"> 
+    <p>House Name </p>
+    <input type="text" name="house_name"> 
+    <p>Player's UID</p>
+    <input type="text" name="player_uid"> 
+
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+<fieldset>
+    <p>Delete Faculty Class Assignment</p>
+
+<form method="POST" action="/deleteTeach"> 
+  <p> 
+    <p> Faculty UID</p>
+    <input type="text" name="faculty_uid"> 
+    <p>Class Name </p>
+    <input type="text" name="class_name"> 
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+<fieldset>
+  <p>Unenroll from a Class</p>
+<form method="POST" action="/deleteTake"> 
+  <p> 
+    <p> Student UID</p>
+    <input type="text" name="student_uid"> 
+    <p>Class Name </p>
+    <input type="text" name="class_name"> 
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+<fieldset>
+  <p>Delete a Deed</p>
+<form method="POST" action="/deleteUse"> 
+  <p> 
+    <p> Place Name</p>
+    <input type="text" name="place_name"> 
+    <p>User UID</p>
+    <input type="text" name="user_uid"> 
+    <input type="submit" value="Delete"> 
+  </p>
+</form>
+</fieldset>
+
+
+<br>
+<h2>Inserting Records </h2>
+<div id="content">
+  <fieldset>
+    <p><b>Insert a Character</b></p>
+                <form method="post" action="/addCharacter">
+                  <label id='uid'>User Id (must be four digits)</label>
+                  <input type="text" name="uid" /><br />
+                  <label id='name'>Name:</label>
+                  <input type="text" name="name" /><br />
+                  <label id='dob'>Date of Birth</label>
+                  <input type='date'name="dob" /><br />
+                  <label id='blood_type'>Blood type (must be muggle born, pure blood, or half blood)</label>
+                  <input type="text" name="blood_type" /><br />
+                  <label id='gender'> Gender (must be male or female)</label>
+                  <input type="text" name="gender" /><br />
+                  <input type="submit" />
+                </form>
+  </fieldset>
+
+
+<fieldset>
+    <p><b>Insert a Member of Faculty</b></p>
+                <form method="post" action="/addFaculty">
+                  <label id='uid'>User Id (must be four digits)</label>
+                  <input type="text" name="uid" /><br />
+                  <label id='date_join_hog'>Date of Joining Hogwarts</label>
+                  <input type="date" name="date_join_hog" /><br />
+                   <label id='head_of'>Head of House</label>
+                  <input type='text'name="head_of" /><br />                 
+                  <input type="submit" />
+                </form>
+  </fieldset>
+
+
+<fieldset>
+
+    <p><b>Insert a Student</b></p>
+
+                <form method="post" action="/addStudent">
+
+                  <label id='uid'>User Id (must be four digits)</label>
+
+                  <input type="text" name="uid" /><br />
+
+                  <label id='date_join_hog'>Date of Joining Hogwarts</label>
+                  <input type="date" name="date_join_hog" /><br />
+
+                  <label id='pet'>Pet</label>
+
+                  <input type='text'name="pet" /><br />  
+
+                  <label id='house_name'>House Name</label>
+
+                  <input type='text'name="house_name" /><br />    
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+
+  <fieldset>
+
+    <p><b>Insert a Class</b></p>
+
+                <form method="post" action="/addClass">
+
+                  <label id='name'>Name</label>
+
+                  <input type="text" name="name" /><br />
+
+                  <label id='department'>Department</label>
+
+                  <input type="text" name="department" /><br />
+
+                  <label id='classroom_loc'>Classroom Location</label>
+
+                  <input type='text'name="classroom_loc" /><br />          
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+
+  <fieldset>
+
+    <p><b>Insert a Team</b></p>
+
+                <form method="post" action="/addTeam">
+
+                  <label id='year'>Year</label>
+
+                  <input type="text" name="year" /><br />       
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+
+<fieldset>
+
+  <p><b>Insert a Player</b></p>
+
+                <form method="post" action="/addPlaysFor">
+
+                  <label id='h_from'>Start Date</label>
+
+                  <input type="date" name="h_from" /><br />
+
+                  <label id='h_to'>End Date</label>
+
+                  <input type="date" name="h_to" /><br />
+
+                  <label id='house_name'>House Name</label>
+
+                  <input type="text" name="house_name" /><br />
+
+                  <label id='position'>Position</label>
+
+                  <input type='text'name="position" /><br />  
+
+                  <label id='player_uid'>Player UID</label>
+
+                  <input type='text'name="player_uid" /><br />                       
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+
+  <fieldset>
+
+  <p><b>Insert a Textbook</b></p>
+
+                <form method="post" action="/addTextbook">
+
+                  <label id='isbn'>ISBN</label>
+
+                  <input type="text" name="isbn" /><br />
+
+                  <label id='name'>Name</label>
+
+                  <input type="text" name="name" /><br />
+
+                  <label id='author'>Author</label>
+
+                  <input type="text" name="author" /><br />
+
+                  <label id='class_name'>Class Name</label>
+
+                  <input type='text'name="class_name" /><br />                                 
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+
+   <fieldset>
+
+    <p><b>Insert a Place</b></p>
+
+
+
+                <form method="post" action="/addPlace">
+
+                  <label id='name'>Name</label>
+
+                  <input type="text" name="name" /><br/>
+
+                  <label id='street_number'>Street Number</label>
+
+                  <input type="text" name="street_number" /><br />
+
+                  <label id='street_name'>Street Name</label>
+
+                  <input type="text" name="street_name" /><br />
+
+                  <label id='zippy'>Zip Code</label>
+
+                  <input type='text'name="zippy" /><br />
+
+                  <label id='city'>City</label>
+
+                  <input type='text'name="city" /><br/> 
+
+                  <label id='country'>Country</label>
+
+                  <input type='text'name="country" /><br/>
+
+                  <label id='be_classroom_for'>Classroom For</label>
+
+                  <input type='text'name="be_classroom_for" /><br />             
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+
+   <fieldset>
+
+  <p><b>Insert a Deed</b></p>
+
+                <form method="post" action="/addDeed">
+
+                  <label id='place_name'>Place Name</label>
+
+                  <input type="text" name="place_name" /><br />
+
+                  <label id='user_uid'>User ID</label>
+
+                  <input type="text" name="user_uid" /><br />
+
+                  <label id='types'>Type</label>
+
+                  <input type="text" name="types" /><br />
+
+                                                  
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+
+   <fieldset>
+
+  <p><b>Insert a Textbook</b></p>
+
+                <form method="post" action="/addTextbook">
+
+                  <label id='isbn'>ISBN</label>
+
+                  <input type="text" name="isbn" /><br />
+
+                  <label id='name'>Name</label>
+
+                  <input type="text" name="name" /><br />
+
+                  <label id='author'>Author</label>
+
+                  <input type="text" name="author" /><br />
+
+                  <label id='class_name'>Class Name</label>
+
+                  <input type='text'name="class_name" /><br />
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+
+
+
+    <fieldset>
+
+  <p><b>Sign Up For A Course</b></p>
+
+                <form method="post" action="/addTake">
+
+                  <label id='student_uid'>Student ID</label>
+
+                  <input type="text" name="student_uid" /><br />
+
+                  <label id='since'>Start Date</label>
+
+                  <input type="date" name="since" /><br />
+
+                  <label id='class_name'>Class Name</label>
+
+                  <input type="text" name="class_name" /><br />                
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+
+
+
+     <fieldset>
+
+  <p><b>Assign A Professor</b></p>
+
+                <form method="post" action="/addTeach">
+
+                  <label id='faculty_uid'>Faculty ID</label>
+
+                  <input type="text" name="faculty_uid" /><br />
+
+                  <label id='since'>Start Date</label>
+
+                  <input type="date" name="since" /><br />
+
+                  <label id='class_name'>Class Name</label>
+
+                  <input type="text" name="class_name" /><br />                
+
+                  <input type="submit" />
+
+                </form>
+
+  </fieldset>
+</div>  
+</body>
+
+</html>
+
+
+

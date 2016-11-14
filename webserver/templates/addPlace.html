@@ -1,0 +1,44 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+  <body>
+    {% if hp %}
+    <h1>Search Result Of...</h1>
+    <h2>{{s_input}}</h2>
+
+    <p>Basic Information:
+      <table>
+          <tr> <td>-- Street Number: </td> <td>{{pi[1]}}</td> </tr>
+          <tr> <td>-- Street Name: </td> <td>{{pi[2]}}</td> </tr>
+          <tr> <td>-- Zip Code: </td> <td>{{pi[3]}}</td> </tr>
+          <tr> <td>-- City: </td> <td>{{pi[4]}}</td> </tr>
+          <tr> <td>-- Country: </td> <td>{{pi[5]}}</td> </tr>
+        </table>
+    </p>
+
+
+  <!-- Search Part -->
+  <!-- <p>Choose a type and search!</p> -->
+  <form method="POST" action="/search">
+    <p> 
+      <select name="search_type">
+        <option value=1>Character</option>
+        <option value=2>Class</option>
+        <option value=3>House</option>
+        <option value=4>Textbook</option>
+        <option value=5>Location</option>
+      </select>
+      <input type="text" name="name"> <input type="submit" value="Search!"> 
+    </p>
+  </form>
+
+
+  </body>
+
+
+</html>

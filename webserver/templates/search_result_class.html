@@ -1,0 +1,101 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+  <body>
+  	<!-- if indicator == 1 -->
+  	{% if hc %}
+  	<h1>Search Result Of...</h1>
+    <h2>{{s_input}}</h2>
+
+    	<!-- basic information -->
+	    {% if hc %}
+	    <p>Basic Information:</p>
+	    <table>
+	    	<tr>
+	    		{% for n in ci %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	    {% endif %}
+
+	    <!-- teacher information -->
+	    {% if ht %}
+	    <p>Teacher Information:</p>
+	    <table>
+	    	<tr>
+	    		{% for n in ti %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	    {% endif %}
+
+	    <!-- student information -->
+	    {% if hs %}
+	    <p>Student Information:</p>
+	    <table>
+	    	<tr>
+	    		{% for n in si %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	    {% endif %}
+
+
+	    <!-- textbook information -->
+	    {% if htx %}
+	    <p>Textbook Information:</p>
+	    <table>
+	    	<tr>
+	    		{% for n in txi %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	    {% endif %}
+
+	    <!-- classroom information -->
+	    {% if hcr %}
+	    <p>Classroom Information:</p>
+	    <table>
+	    	<tr>
+	    		{% for n in cri %}
+	    			<td>{{n}}</td>
+	    		{% endfor %}
+	    	</tr>
+	    </table>
+	    {% endif %}
+
+
+
+    {% else %}
+    	<h1>Sorry... No Information Found</h1>
+  	{% endif %}
+
+	<!-- Search Part -->
+	<p>Choose a type and search!</p> 
+	<form method="POST" action="/search"> 
+	  <p> 
+	    <select name="search_type">
+	      <option value=1>Character</option>
+	      <option value=2>Class</option>
+	      <option value=3>House</option>
+	      <option value=4>Textbook</option>
+	      <option value=5>Location</option>
+	    </select>
+	    <input type="text" name="name"> <input type="submit" value="Search!"> 
+	  </p>
+	</form>
+
+
+	</body>
+
+
+</html>

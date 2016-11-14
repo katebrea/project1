@@ -1,0 +1,132 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+{% if bd[3] == 'female' %}
+{% set s_input_pron = 'She' %}
+{% set s_input_pp = 'Her' %}
+{% else %}
+{% set s_input_pron = 'He' %}
+{% set s_input_pp = 'His' %}
+{% endif %}
+
+<body>
+  {% if hbi %}
+  <h1>Search Result Of...</h1>
+    <h2>{{s_input}}</h2>
+
+    <table>
+      <tr><td>Date of Birth:</td><td>{{bd[1]}}</td></tr>
+      <tr><td>Blood Status:</td><td>{{bd[2]}}</td></tr>
+      <tr><td>Gender:</td><td>{{bd[3]}}</td></tr>
+    </table>
+    
+    <!-- Student Basic Information -->
+    {% if istu %}
+      <p>
+        {{s_input}} began attending Hogwarts at <b>{{sd[0]}}</b> and was Sorted into <b>{{sd[2]}} House</b>. 
+        {% if sd[1] %}{{s_input_pp}} pet is a <b>{{sd[1]}}</b>.{% endif %}
+      </p>
+      <p>
+        {% if iqp %}
+        {{s_input_fn}} also joined <b>{{sd[2]}}'s Quidditch Team</b> from <b>{{qd[0]}}</b> to <b>{{qd[1]}}</b>. {{s_input_pron}} played as a <b>{{qd[3]}}</b> on court.
+        {% endif %}
+      </p>
+    {% endif %}
+
+    <!-- Faculty Basic Information -->
+    {% if ifa %}
+      <p>
+        {{s_input}} has joined the faculty of Hogwarts since <b>{{fi[0]}}</b>.
+      </p>
+      <p>
+        {% if ih %}
+        {{s_input_pron}} is also the head of <b>{{hi[0]}} House</b>.
+        {% endif %} 
+      </p>
+    {% endif %}
+    
+    <!-- Places Utilization -->
+    {% if hu %}
+      <p>
+        {% if hhom %}{{s_input_fn}} lives in <b>{{hn}}</b>.{% endif %} 
+        {% if ho %} {{s_input_fn}}'s office is in <b>{{officen}}</b>. {% endif %}
+      </p>
+      {% if hhom %}
+      <p>About <b>{{hn}}</b>:
+        <table>
+          <tr> <td>-- Street Number: </td> <td>{{homed[1]}}</td> </tr>
+          <tr> <td>-- Street Name: </td> <td>{{homed[2]}}</td> </tr>
+          <tr> <td>-- Zip Code: </td> <td>{{homed[3]}}</td> </tr>
+          <tr> <td>-- City: </td> <td>{{homed[4]}}</td> </tr>
+          <tr> <td>-- Country: </td> <td>{{homed[5]}}</td> </tr>
+        </table>
+      </p>
+      {% endif %}
+      {% if ho %}
+      <p>About <b>{{officen}}</b>:
+        <table>
+          <tr> <td>-- Street Number: </td> <td>{{od[1]}}</td> </tr>
+          <tr> <td>-- Street Name: </td> <td>{{od[2]}}</td> </tr>
+          <tr> <td>-- Zip Code: </td> <td>{{od[3]}}</td> </tr>
+          <tr> <td>-- City: </td> <td>{{od[4]}}</td> </tr>
+          <tr> <td>-- Country: </td> <td>{{od[5]}}</td> </tr>
+        </table>
+      </p>
+      {% endif %}   
+    {% endif %}
+    
+    <!-- Students Taking Classes -->
+    {% if hc %}
+    <p>Courses taken by {{s_input_fn}}:
+    <table>
+      {% for n in cd %}
+      <tr><td>-- {{n}}</td></tr>
+      {% endfor %}
+    </table>
+    </p>
+    {% endif %}
+
+    <!-- Teaching classes -->
+    {% if it %}
+      <p>
+        Courses that {{s_input_fn}} has taught:
+        <table>
+          {% for n in ti %}
+          <tr> <td>-- {{n}}</td> </tr>
+          {% endfor %}
+        </table>
+      </p>
+    {% endif %}
+
+
+
+  {% else %}
+    <h1>Sorry... No Information Found</h1>
+  {% endif %}
+
+
+<!-- Search Part -->
+<!-- <p>Choose a type and search!</p> -->
+<!-- <form method="POST" action="/search"> -->
+  <p> 
+    <select name="search_type">
+      <option value=1>Character</option>
+      <option value=2>Class</option>
+      <option value=3>House</option>
+      <option value=4>Textbook</option>
+      <option value=5>Location</option>
+    </select>
+    <input type="text" name="name"> <input type="submit" value="Search!"> 
+  </p>
+</form>
+
+
+</body>
+
+
+</html>
