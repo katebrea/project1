@@ -6,9 +6,15 @@
     }
   </style>
 <body>
+
+
   <h1>Harry Potter Database</h1>
 
-  <br>
+<br>
+  <p><b>{{dlt_msg}}</b></p>
+  <p><b>{{ist_msg}}</b></p>
+
+
   <h2>Searching for Records</h2>
 <p>Choose a type and search!</p>
 <form method="POST" action="/search"> 
@@ -459,6 +465,233 @@
                 </form>
 
   </fieldset>
+<h2>Updating Records</h2>
+  <fieldset>
+  <p><b>Update Character Info</b></p>
+
+                <form method="post" action="/updateCharacter">
+   
+                  <label id='uid'>User Id (must be four digits)</label>
+                  <input type="text" name="uid" /><br />
+                  <label id='name'>Name:</label>
+                  <input type="text" name="name" /><br />
+                  <label id='dob'>Date of Birth</label>
+                  <input type='date'name="dob" /><br />
+                  <label id='blood_type'>Blood type (must be muggle born, pure blood, or half blood)</label>
+                  <input type="text" name="blood_type" /><br />
+                  <label id='gender'> Gender (must be male or female)</label>
+                  <input type="text" name="gender" /><br />
+                  <input type="submit"  value="Update"/>
+                </form>
+
+ </fieldset>
+
+   <fieldset>
+  <p><b>Update Character Info</b></p>
+
+                <form method="post" action="/updateCharacter">
+   
+                  <label id='uid'>User Id (must be four digits)</label>
+                  <input type="text" name="uid" /><br />
+                  <label id='name'>Name:</label>
+                  <input type="text" name="name" /><br />
+                  <label id='dob'>Date of Birth</label>
+                  <input type='date'name="dob" /><br />
+                  <label id='blood_type'>Blood type (must be muggle born, pure blood, or half blood)</label>
+                  <input type="text" name="blood_type" /><br />
+                  <label id='gender'> Gender (must be male or female)</label>
+                  <input type="text" name="gender" /><br />
+                  <input type="submit"  value="Update"/>
+                </form>
+
+ </fieldset>
+
+   <fieldset>
+  <p><b>Update Faculty Info</b></p>
+
+                <form method="post" action="/updateFaculty">
+   
+                  <label id='uid'>User Id (must be four digits)</label>
+                  <input type="text" name="uid" /><br />
+                  <label id='date_join_hog'>Date of Joining Hogwarts:</label>
+                  <input type="date" name="date_join_hog" /><br />                  
+                  <input type="submit"  value="Update"/>
+                </form>
+
+ </fieldset>
+
+   <fieldset>
+  <p><b>Update Student Info</b></p>
+
+                <form method="post" action="/updateStudent">
+   
+                  <label id='uid'>User Id (must be four digits)</label>
+                  <input type="text" name="uid" /><br />
+                  <label id='date_join_hog'>Date of Joining Hogwarts:</label>
+                  <input type="date" name="date_join_hog" /><br />
+                  <label id='pet'>Pet</label>
+                  <input type='text'name="pet" /><br />
+                  <label id='house_name'>House name</label>
+                  <input type="text" name="house_name" /><br />
+                  <input type="submit"  value="Update"/>
+                </form>
+
+ </fieldset>
+
+   <fieldset>
+  <p><b>Update Class Info</b></p>
+
+                <form method="post" action="/updateClass">
+   
+                  <label id='name'>Class Name</label>
+                  <input type="text" name="name" /><br />
+                  <label id='department'>Department</label>
+                  <input type="text" name="department" /><br />
+                  <input type="submit"  value="Update"/>
+                </form>
+
+ </fieldset>
+
+  <fieldset>
+  <p><b>Update House Info</b></p>
+
+                <form method="post" action="/updateHouse">
+   
+                  <label id='name'>House Name</label>
+                  <input type="text" name="name" /><br />
+                  <label id='ghost'>Ghost</label>
+                  <input type="text" name="ghost" /><br />
+                   <label id='founder'>Founder</label>
+                  <input type="text" name="founder" /><br />
+                  <label id='door_guard'>Door Guard</label>
+                  <input type="text" name="door_guard" /><br />  
+                   <label id='color'>Color</label>
+                  <input type="text" name="color" /><br />
+                  
+                  <input type="submit"  value="Update"/>
+                </form>
+
+ </fieldset>
+
+<fieldset>
+  <p><b>Update Place Info</b></p>
+
+                <form method="post" action="/updatePlace">
+                  <label id='name'>Name</label>
+                  <input type="text" name="name" /><br/>
+                  <label id='street_number'>Street Number</label>
+                  <input type="text" name="street_number" /><br />
+                  <label id='street_name'>Street Name</label>
+                  <input type="text" name="street_name" /><br />
+                  <label id='zippy'>Zip Code</label>
+                  <input type='text'name="zippy" /><br />
+                  <label id='city'>City</label>
+                  <input type='text'name="city" /><br/> 
+                  <label id='country'>Country</label>
+                  <input type='text'name="country" /><br/>
+                 <!--  <label id='be_classroom_for'>Classroom For</label>
+                  <input type='text'name="be_classroom_for" /><br />   -->           
+                  <input type="submit" value="update" />
+                </form>
+ </fieldset>
+
+<fieldset>
+  <p><b>Update Textbook Info</b></p>
+
+                <form method="post" action="/updateTextbook">
+                  <label id='isbn'>ISBN</label>
+                  <input type="text" name="isbn" /><br/>
+                  <label id='name'>Name</label>
+                  <input type="text" name="name" /><br />
+                  <label id='author'>Author</label>
+                  <input type="text" name="author" /><br />                            
+                  <input type="submit" value="update" />
+                </form>
+ </fieldset>
+
+ <fieldset>
+  <p><b>Update Player Info</b></p>
+
+                <form method="post" action="/updatePlaysFor">
+                  <label id='h_from'>Start date</label>
+                  <input type="date" name="h_from" /><br/>
+                   <label id='h_to'>End date</label>
+                  <input type="date" name="h_to" /><br/>
+                  <label id='house_name'>House Name</label>
+                  <input type="text" name="house_name" /><br />
+                  <label id='position'>Position</label>
+                  <input type="text" name="position" /><br />  
+                   <label id='player_uid'>Player UID</label>                         
+                  <input type="text" name="player_uid" /><br />                           
+                  <input type="submit" value="update" />
+                </form>
+ </fieldset>
+
+  <fieldset>
+  <p><b>Update Deed</b></p>
+
+                <form method="post" action="/updateDeed">
+
+                  <label id='place_name'>Place Name</label>
+
+                  <input type="text" name="place_name" /><br/>
+
+                   <label id='user_uid'>User UID</label>
+
+                  <input type="text" name="user_uid" /><br/>
+
+                  <label id='types'>home or office?</label>
+
+                  <input type="text" name="types" /><br />  
+
+                  <input type="submit" value="update" />
+                </form>
+ </fieldset>
+
+   <fieldset>
+  <p><b>Update Class Schedule (change the starting date of a class for a particular student)</b></p>
+
+                <form method="post" action="/updateTake">
+
+                  <label id='student_uid'>Student UID</label>
+
+                  <input type="text" name="student_uid" /><br/>
+
+                   <label id='since'>Start date</label>
+
+                  <input type="date" name="since" /><br/>
+
+                  <label id='class_name'>Class Name</label>
+
+                  <input type="text" name="class_name" /><br />  
+                                     
+                  <input type="submit" value="update" />
+                </form>
+ </fieldset>
+
+  <fieldset>
+  <p><b>Update Teaching Schedule (change the starting date of a class for a particular professor) </b></p>
+
+                <form method="post" action="/updateTeach">
+
+                  <label id='faculty_uid'>Faculty UID</label>
+
+                  <input type="text" name="faculty_uid" /><br/>
+
+                   <label id='since'>Start date</label>
+
+                  <input type="date" name="since" /><br/>
+
+                  <label id='class_name'>Class Name</label>
+
+                  <input type="text" name="class_name" /><br />  
+                                     
+                  <input type="submit" value="update" />
+                </form>
+ </fieldset>
+
+
+
 </div>  
 </body>
 
