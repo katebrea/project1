@@ -946,7 +946,7 @@ def addCharacter():
     cmd = 'INSERT INTO characters VALUES (:ui, :na, :do, :bl, :ge)'
     g.conn.execute(text(cmd), ui = uid, na = name, do = dob, bl = blood_type, ge = gender)
     print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -963,8 +963,8 @@ def addFaculty():
   try:
     cmd = "INSERT INTO faculty VALUES (:ui, :da)"
     g.conn.execute(text(cmd), ui = uid, da = date_join_hog)
-    print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    print "\ninserted data to table 'Faculty'"
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -980,8 +980,8 @@ def addClass():
   try:
     cmd = "INSERT INTO class VALUES (:na, :de, :cl)"
     g.conn.execute(text(cmd), na = name, de = department, cl = classroom_loc)
-    print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    print "\ninserted data to table 'Class'"
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1001,8 +1001,8 @@ def addPlace():
   try:
     cmd = "INSERT INTO places VALUES (:na, :stnu, :stna, :zi, :ci, :co)"
     g.conn.execute(text(cmd), na = name, stnu = street_number, stna = street_name, zi = zippy, ci = city, co = country)
-    print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    print "\ninserted data to table 'places'"
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1019,8 +1019,8 @@ def addStudent():
   try:
     cmd = 'INSERT INTO students VALUES (:ui, :da, :pe, :ho)'
     g.conn.execute(text(cmd), ui = uid, da = date_join_hog, pe = pet, ho = house_name)
-    print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    print "\ninserted data to table 'students'"
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1039,8 +1039,8 @@ def addPlaysFor():
   try:
     cmd = "INSERT INTO plays_for VALUES (:hf, :ht, :ho, :po, :pl)"
     g.conn.execute(text(cmd), hf = h_from, ht = h_to, ho = house_name, po = position, pl = player_uid)
-    print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    print "\ninserted data to table 'plays_for'"
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1057,8 +1057,8 @@ def addTextbook():
   try:
     cmd = "INSERT INTO textbook VALUES (:isb, :na, :au, :cl)"
     g.conn.execute(text(cmd), isb = isbn, na = name, au = author, cl = class_name)
-    print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    print "\ninserted data to table 'textbook'"
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1074,8 +1074,8 @@ def addDeed():
   try:
     cmd = "INSERT INTO use VALUES (:pl, :us, :ty)"
     g.conn.execute(text(cmd), pl = place_name, us = user_uid, ty = types)
-    print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    print "\ninserted data to table 'use'"
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1091,8 +1091,8 @@ def addTake():
   try:
     cmd = 'INSERT INTO take VALUES (:st, :si, :cl)'
     g.conn.execute(text(cmd), st = student_uid, si = since, cl = class_name)
-    print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    print "\ninserted data to table 'take'"
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1108,8 +1108,8 @@ def addTeach():
   try:
     cmd = 'INSERT INTO Teach VALUES (:fa, :si, :cl)'
     g.conn.execute(text(cmd), fa = faculty_uid, si = since, cl = class_name)
-    print "\ninserted data to table 'characters'"
-    message = 'Insert successfully!'
+    print "\ninserted data to table 'teach'"
+    message = 'Insert successful!'
   except Exception:
     message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1169,7 +1169,7 @@ def updateStudent():
     cmd = 'UPDATE students SET uid=:ui, date_join_hog= :da, pet=:pe, house_name=:ho WHERE uid=:ui'
     g.conn.execute(text(cmd), ui = uid, da = date_join_hog, pe = pet, ho = house_name)
     print "\nupdated data to table"
-    message = 'Update successfully!'
+    message = 'Update successful!'
   except Exception:
     message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1186,7 +1186,7 @@ def updateClass():
     cmd = "UPDATE class SET name=:na, department=:de where name=:na"
     g.conn.execute(text(cmd), na = name, de = department)
     print "\nupdated data to table"
-    message = 'Update successfully!'
+    message = 'Update successful!'
   except Exception:
     message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1207,7 +1207,7 @@ def updateHouse():
     cmd = "UPDATE Houses SET name=:na, ghost=:gh, founder=:fo, door_guard=:dg, color=:co where name=:na"
     g.conn.execute(text(cmd), na = name, gh = ghost, fo=founder, dg = door_guard, co=color)
     print "\nupdated data to table"
-    message = 'Update successfully!'
+    message = 'Update successful!'
   except Exception:
     message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1229,7 +1229,7 @@ def updatePlace():
     cmd = "UPDATE places set name= :na, street_number = :stnu, street_name= :stna, zip= :zi, city= :ci, country= :co where name= :na"
     g.conn.execute(text(cmd), na = name, stnu = street_number, stna = street_name, zi = zippy, ci = city, co = country)
     print "\nupdated data to table"
-    message = 'Update successfully!'
+    message = 'Update successful!'
   except Exception:
     message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1246,7 +1246,7 @@ def updateTextbook():
     cmd = "UPDATE textbook SET isbn=:isb, name=:na, author=:au WHERE isbn=:isb"
     g.conn.execute(text(cmd), isb = isbn, na = name, au = author)
     print "\nupdated data to table"
-    message = 'Update successfully!'
+    message = 'Update successful!'
   except Exception:
     message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1265,7 +1265,7 @@ def updatePlaysFor():
     cmd = "UPDATE plays_for set h_from=:hf, h_to=:ht, house_name=:ho, position=:po where player_uid=:pl"
     g.conn.execute(text(cmd), hf = h_from, ht = h_to, ho = house_name, po = position, pl = player_uid)
     print "\nupdated data to table"
-    message = 'Update successfully!'
+    message = 'Update successful!'
   except Exception:
     message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1283,7 +1283,7 @@ def updateDeed():
     cmd = "UPDATE Use set place_name =:pl, user_uid=:us, type=:ty where user_uid=:us and place_name=:pl"
     g.conn.execute(text(cmd), pl = place_name, us = user_uid, ty = types)
     print "\nupdated data to table"
-    message = 'Update successfully!'
+    message = 'Update successful!'
   except Exception:
     message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1300,7 +1300,7 @@ def updateTake():
     cmd = 'UPDATE Take SET student_uid =:st, since =:si, class_name =:cl WHERE student_uid =:st and class_name=:cl'
     g.conn.execute(text(cmd), st = student_uid, si = since, cl = class_name)
     print "\nupdated data to table"
-    message = 'Update successfully!'
+    message = 'Update successful!'
   except Exception:
     message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
@@ -1317,7 +1317,7 @@ def updateTeach():
     cmd = 'UPDATE Teach set faculty_uid =:fa, since =:si, class_name =:cl where faculty_uid =:fa and class_name =:cl' 
     g.conn.execute(text(cmd), fa = faculty_uid, si = since, cl = class_name)
     print "\nupdated data to table"
-    message = 'Update successfully!'
+    message = 'Update successful!'
   except Exception:
     message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
     print message
