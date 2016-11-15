@@ -528,6 +528,8 @@ def search_result_characters():
     if is_faculty == 1:  
       (is_head, head_info) = searchTable_head_of(uid)
       (is_teaching, teaching_info) = searchTable_teach(uid)
+
+
   
   # generating a dictionary which contains all the indicators and search results
 
@@ -780,6 +782,7 @@ def deleteFaculty():
     cmd = 'DELETE FROM faculty WHERE uid= :ui'
     g.conn.execute(text(cmd), ui = uid)
     print "\ndeleted data from database successfully"
+    message = 'Delete successful!'
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
@@ -793,11 +796,13 @@ def deleteStudent():
   print "\nenter function deleteStudent"
   uid= str(request.form['uid'])
   print "\ngethered data from webpage"
+  
   # g.conn.execute("DELETE FROM characters WHERE uid= %s", uid)
   try:
     cmd = 'DELETE FROM students WHERE uid= :ui'
     g.conn.execute(text(cmd), ui = uid)
     print "\ndeleted data from database successfully"
+    message = 'Delete successful!'
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
@@ -815,6 +820,7 @@ def deleteTextbook():
     cmd = 'DELETE FROM textbook WHERE isbn= :isb'
     g.conn.execute(text(cmd), isb = isbn)
     print "\ndeleted data from database successfully"
+    message = 'Delete successful'
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
@@ -833,6 +839,7 @@ def deleteClass():
     cmd = 'DELETE FROM class WHERE name= :n'
     g.conn.execute(text(cmd), n = name)
     print "\ndeleted data from database successfully"
+    message = 'Delete successfully!'
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
@@ -851,6 +858,7 @@ def deletePlace():
     cmd = 'DELETE FROM Places WHERE name= :n'
     g.conn.execute(text(cmd), n = name)
     print "\ndeleted data from database successfully"
+    message = 'Delete successfully!'
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
@@ -870,6 +878,7 @@ def deletePlayer():
     cmd = 'DELETE FROM plays_for WHERE house_name= :n AND h_from= :h AND player_uid= :pid'
     g.conn.execute(text(cmd), h = h_from, n = house_name, pid = player_uid)
     print "\ndeleted data from database successfully"
+    message = 'Delete successfully!'
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
@@ -888,6 +897,7 @@ def deleteTeach():
     cmd = 'DELETE FROM Teach WHERE faculty_uid= :ui AND class_name= :cn'
     g.conn.execute(text(cmd), ui= faculty_uid, cn = class_name)
     print "\ndeleted data from database successfully"
+    message = 'Delete successfully!'
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
@@ -906,6 +916,7 @@ def deleteTake():
     cmd = 'DELETE FROM Take WHERE student_uid= :ui AND class_name= :cn'
     g.conn.execute(text(cmd), ui= student_uid, cn = class_name)
     print "\ndeleted data from database successfully"
+    message = 'Delete successfully!'
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
@@ -924,6 +935,7 @@ def deleteUse():
     cmd = 'DELETE FROM use WHERE place_name= :pn AND user_uid = :ui'
     g.conn.execute(text(cmd), pn=place_name, ui = user_uid)
     print "\ndeleted data from database successfully"
+    message = 'Delete successfully!'
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
