@@ -797,7 +797,7 @@ def deleteStudent():
   try:
     cmd = 'DELETE FROM students WHERE uid= :ui'
     g.conn.execute(text(cmd), ui = uid)
-     print "\ndeleted data from database successfully"
+    print "\ndeleted data from database successfully"
   except Exception:
     message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
     print message
@@ -810,11 +810,17 @@ def deleteTextbook():
   print "\nenter function deleteTextbook"
   isbn= str(request.form['isbn'])
   print "\ngethered data from webpage"
+  try:
   # g.conn.execute("DELETE FROM characters WHERE uid= %s", uid)
-  cmd = 'DELETE FROM textbook WHERE isbn= :isb'
-  g.conn.execute(text(cmd), isb = isbn)
-  print "\ndeleted data from database successfully"
-  return redirect('/')
+    cmd = 'DELETE FROM textbook WHERE isbn= :isb'
+    g.conn.execute(text(cmd), isb = isbn)
+    print "\ndeleted data from database successfully"
+  except Exception:
+    message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
+    print message
+
+  context = dict(dlt_msg = message)  
+  return render_template("proj1index.html", **context)
 
 
 @app.route('/deleteClass', methods=['POST'])
@@ -822,11 +828,17 @@ def deleteClass():
   print "\nenter function deleteClass"
   name= str(request.form['name'])
   print "\ngethered data from webpage"
+  try:
   # g.conn.execute("DELETE FROM characters WHERE uid= %s", uid)
-  cmd = 'DELETE FROM class WHERE name= :n'
-  g.conn.execute(text(cmd), n = name)
-  print "\ndeleted data from database successfully"
-  return redirect('/')
+    cmd = 'DELETE FROM class WHERE name= :n'
+    g.conn.execute(text(cmd), n = name)
+    print "\ndeleted data from database successfully"
+  except Exception:
+    message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
+    print message
+
+  context = dict(dlt_msg = message)  
+  return render_template("proj1index.html", **context)
 
 
 @app.route('/deletePlace', methods=['POST'])
@@ -835,10 +847,16 @@ def deletePlace():
   name= str(request.form['name'])
   print "\ngethered data from webpage"
   # g.conn.execute("DELETE FROM characters WHERE uid= %s", uid)
-  cmd = 'DELETE FROM Places WHERE name= :n'
-  g.conn.execute(text(cmd), n = name)
-  print "\ndeleted data from database successfully"
-  return redirect('/')
+  try:
+    cmd = 'DELETE FROM Places WHERE name= :n'
+    g.conn.execute(text(cmd), n = name)
+    print "\ndeleted data from database successfully"
+  except Exception:
+    message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
+    print message
+
+  context = dict(dlt_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/deletePlayer', methods=['POST'])
 def deletePlayer():
@@ -847,11 +865,17 @@ def deletePlayer():
   house_name= str(request.form['house_name'])
   player_uid= str(request.form['player_uid'])
   print "\ngethered data from webpage"
+  try:
   # g.conn.execute("DELETE FROM characters WHERE uid= %s", uid)
-  cmd = 'DELETE FROM plays_for WHERE house_name= :n AND h_from= :h AND player_uid= :pid'
-  g.conn.execute(text(cmd), h = h_from, n = house_name, pid = player_uid)
-  print "\ndeleted data from database successfully"
-  return redirect('/')
+    cmd = 'DELETE FROM plays_for WHERE house_name= :n AND h_from= :h AND player_uid= :pid'
+    g.conn.execute(text(cmd), h = h_from, n = house_name, pid = player_uid)
+    print "\ndeleted data from database successfully"
+  except Exception:
+    message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
+    print message
+
+  context = dict(dlt_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/deleteTeach', methods=['POST'])
 def deleteTeach():
@@ -859,11 +883,17 @@ def deleteTeach():
   faculty_uid= str(request.form['faculty_uid'])
   class_name= str(request.form['class_name'])
   print "\ngethered data from webpage"
+  try:
   # g.conn.execute("DELETE FROM characters WHERE uid= %s", uid)
-  cmd = 'DELETE FROM Teach WHERE faculty_uid= :ui AND class_name= :cn'
-  g.conn.execute(text(cmd), ui= faculty_uid, cn = class_name)
-  print "\ndeleted data from database successfully"
-  return redirect('/')
+    cmd = 'DELETE FROM Teach WHERE faculty_uid= :ui AND class_name= :cn'
+    g.conn.execute(text(cmd), ui= faculty_uid, cn = class_name)
+    print "\ndeleted data from database successfully"
+  except Exception:
+    message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
+    print message
+
+  context = dict(dlt_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/deleteTake', methods=['POST'])
 def deleteTake():
@@ -871,11 +901,17 @@ def deleteTake():
   student_uid= str(request.form['student_uid'])
   class_name= str(request.form['class_name'])
   print "\ngethered data from webpage"
+  try:
   # g.conn.execute("DELETE FROM characters WHERE uid= %s", uid)
-  cmd = 'DELETE FROM Take WHERE student_uid= :ui AND class_name= :cn'
-  g.conn.execute(text(cmd), ui= student_uid, cn = class_name)
-  print "\ndeleted data from database successfully"
-  return redirect('/')
+    cmd = 'DELETE FROM Take WHERE student_uid= :ui AND class_name= :cn'
+    g.conn.execute(text(cmd), ui= student_uid, cn = class_name)
+    print "\ndeleted data from database successfully"
+  except Exception:
+    message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
+    print message
+
+  context = dict(dlt_msg = message)  
+  return render_template("proj1index.html", **context)
 
 
 @app.route('/deleteUse', methods=['POST'])
@@ -884,72 +920,18 @@ def deleteUse():
   place_name= str(request.form['place_name'])
   user_uid= str(request.form['user_uid'])
   print "\ngethered data from webpage"
-  # g.conn.execute("DELETE FROM characters WHERE uid= %s", uid)
-  cmd = 'DELETE FROM use WHERE place_name= :pn AND user_uid = :ui'
-  g.conn.execute(text(cmd), pn=place_name, ui = user_uid)
-  print "\ndeleted data from database successfully"
-  return redirect('/')
+  try:
+    cmd = 'DELETE FROM use WHERE place_name= :pn AND user_uid = :ui'
+    g.conn.execute(text(cmd), pn=place_name, ui = user_uid)
+    print "\ndeleted data from database successfully"
+  except Exception:
+    message = 'Deletion failed. Please make sure that you type in the right data and all referencing data has been deleted.'
+    print message
 
-# @app.route("/", methods=["GET"])
-# def hello():
-#     return render_template('TEMP.html')
+  context = dict(dlt_msg = message)  
+  return render_template("proj1index.html", **context)
 
-# @app.route('/delete', methods=["GET"])
-# def delete():
-#     uid= str(request.form['uid'])
-#     g.conn.execute("DELETE FROM characters WHERE uid= '%s'" %(uid))
-#   #g.conn.execute(characters.delete().where(characters.uid=VALUES('%s'), uid))
-#     return redirect('/')
-
-
-# @app.route('/deleteFaculty', methods=['POST'])
-# def deleteFaculty():
-#   uid= str(request.form['uid'])
-#   g.conn.execute('DELETE FROM Faculty WHERE uid=VALUES (%s)', uid)
-#   # cmd = 'DELETE FROM Faculty WHERE uid = VALUES (:ui)'
-#   # g.conn.execute(text(cmd), ui = uid)
-#   return redirect('/')
-
-#   @app.route('/deleteCharacter', methods=['POST'])
-# def deleteCharacter():
-#   uid= str(request.form['uid'])
-#   g.conn.execute('DELETE FROM characters WHERE uid=VALUES (%s)', uid)
-#   return redirect('/')
-
-#   @app.route('/deleteCharacter', methods=['POST'])
-# def deleteCharacter():
-#   uid= str(request.form['uid'])
-#   g.conn.execute('DELETE FROM characters WHERE uid=VALUES (%s)', uid)
-#   return redirect('/')
-
-#   @app.route('/deleteCharacter', methods=['POST'])
-# def deleteCharacter():
-#   uid= str(request.form['uid'])
-#   g.conn.execute('DELETE FROM characters WHERE uid=VALUES (%s)', uid)
-#   return redirect('/')
-
-#   @app.route('/deleteCharacter', methods=['POST'])
-# def deleteCharacter():
-#   uid= str(request.form['uid'])
-#   g.conn.execute('DELETE FROM characters WHERE uid=VALUES (%s)', uid)
-#   return redirect('/')
-
-#   @app.route('/deleteCharacter', methods=['POST'])
-# def deleteCharacter():
-#   uid= str(request.form['uid'])
-#   g.conn.execute('DELETE FROM characters WHERE uid=VALUES (%s)', uid)
-#   return redirect('/')
-
-###  The Insert Section
-
-
-  # def updateTable_characters(search_input, input_type = 'name'):
-  # print '\nquerying table Characters'
-  # cmd = 'SELECT * FROM characters WHERE %s = :si' %(input_type)
-  # cursor = g.conn.execute(text(cmd), si = search_input)
-
-
-#methods include push, put, get. checks for method defined in html.
+##The Insert Section
 
 @app.route('/addCharacter', methods=['POST'])
 def addCharacter():
@@ -960,12 +942,17 @@ def addCharacter():
   blood_type=request.form['blood_type']
   gender=request.form['gender']
   print "\ncollected data from webpage"
+  try:
+    cmd = 'INSERT INTO characters VALUES (:ui, :na, :do, :bl, :ge)'
+    g.conn.execute(text(cmd), ui = uid, na = name, do = dob, bl = blood_type, ge = gender)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
 
-  # g.conn.execute('INSERT INTO characters VALUES (%s,%s,%s,%s,%s)', uid, name, dob, blood_type, gender)
-  cmd = 'INSERT INTO characters VALUES (:ui, :na, :do, :bl, :ge)'
-  g.conn.execute(text(cmd), ui = uid, na = name, do = dob, bl = blood_type, ge = gender)
-  print "\ninserted data to table 'characters'"
-  return redirect('/')
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 #methods include push, put, get. checks for method defined in html.
 @app.route('/addFaculty', methods=['POST'])
@@ -973,22 +960,34 @@ def addFaculty():
   uid= request.form['uid']
   date_join_hog = str(request.form['date_join_hog'])
   # head_of=request.form['head_of']
+  try:
+    cmd = "INSERT INTO faculty VALUES (:ui, :da)"
+    g.conn.execute(text(cmd), ui = uid, da = date_join_hog)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
 
-  # g.conn.execute('INSERT INTO faculty VALUES (%s,%s)', uid, date_join_hog)
-  cmd = "INSERT INTO faculty VALUES (:ui, :da)"
-  g.conn.execute(text(cmd), ui = uid, da = date_join_hog)
-  return redirect('/')
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/addClass', methods=['POST'])
 def addClass():
   name= request.form['name']
   department = request.form['department']
   classroom_loc=request.form['classroom_loc']
-  
-  # g.conn.execute('INSERT INTO Class VALUES (%s,%s, %s)', name, department, classroom_loc)
-  cmd = "INSERT INTO class VALUES (:na, :de, :cl)"
-  g.conn.execute(text(cmd), na = name, de = department, cl = classroom_loc)
-  return redirect('/')
+  try:
+    cmd = "INSERT INTO class VALUES (:na, :de, :cl)"
+    g.conn.execute(text(cmd), na = name, de = department, cl = classroom_loc)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/addPlace', methods=['POST'])
 def addPlace():
@@ -999,10 +998,17 @@ def addPlace():
   city=request.form['city']
   country=request.form['country']
   be_classroom_for=request.form['be_classroom_for']
-  # g.conn.execute('INSERT INTO Places VALUES (%s,%s,%s,%s,%s,%s)', name, street_number, street_name, zippy, city, country)
-  cmd = "INSERT INTO places VALUES (:na, :stnu, :stna, :zi, :ci, :co)"
-  g.conn.execute(text(cmd), na = name, stnu = street_number, stna = street_name, zi = zippy, ci = city, co = country)
-  return redirect('/')
+  try:
+    cmd = "INSERT INTO places VALUES (:na, :stnu, :stna, :zi, :ci, :co)"
+    g.conn.execute(text(cmd), na = name, stnu = street_number, stna = street_name, zi = zippy, ci = city, co = country)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/addStudent', methods=['POST'])
 def addStudent():
@@ -1010,19 +1016,18 @@ def addStudent():
   date_join_hog = str(request.form['date_join_hog'])
   pet=request.form['pet']
   house_name=request.form['house_name']
-  # g.conn.execute('INSERT INTO students VALUES (%s,%s,%s,%s)', uid, date_join_hog, pet, house_name)
-  cmd = 'INSERT INTO students VALUES (:ui, :da, :pe, :ho)'
-  g.conn.execute(text(cmd), ui = uid, da = date_join_hog, pe = pet, ho = house_name)
-  return redirect('/')
+  try:
+    cmd = 'INSERT INTO students VALUES (:ui, :da, :pe, :ho)'
+    g.conn.execute(text(cmd), ui = uid, da = date_join_hog, pe = pet, ho = house_name)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
 
-# @app.route('/addTeam', methods=['POST'])
-# def addTeam():
-#   year= str(request.form['year'])
-#   #name = request.form['name'] #request is a form 
-#   # g.conn.execute('INSERT INTO Quidditch_teams VALUES (%s)', year)
-#   cmd = 'INSERT INTO Quidditch_teams VALUES (:ye)'
-#   g.conn.execute(text(cmd), ye = year)
-#   return redirect('/')
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
+
 
 @app.route('/addPlaysFor', methods=['POST'])
 def addPlaysFor():
@@ -1031,10 +1036,17 @@ def addPlaysFor():
   house_name = request.form['house_name'] 
   position = request.form['position']
   player_uid=request.form['player_uid']
-  # g.conn.execute('INSERT INTO Plays_for VALUES (%s,%s,%s,%s,%s)', h_from, h_to, house_name, position, player_uid)
-  cmd = "INSERT INTO plays_for VALUES (:hf, :ht, :ho, :po, :pl)"
-  g.conn.execute(text(cmd), hf = h_from, ht = h_to, ho = house_name, po = position, pl = player_uid)
-  return redirect('/')
+  try:
+    cmd = "INSERT INTO plays_for VALUES (:hf, :ht, :ho, :po, :pl)"
+    g.conn.execute(text(cmd), hf = h_from, ht = h_to, ho = house_name, po = position, pl = player_uid)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+  
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/addTextbook', methods=['POST'])
 def addTextbook():
@@ -1042,43 +1054,68 @@ def addTextbook():
   name = request.form['name'] 
   author = request.form['author']
   class_name=request.form['class_name']
+  try:
+    cmd = "INSERT INTO textbook VALUES (:isb, :na, :au, :cl)"
+    g.conn.execute(text(cmd), isb = isbn, na = name, au = author, cl = class_name)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
 
-  # g.conn.execute('INSERT INTO Textbook VALUES (%s,%s,%s,%s)', isbn, name, author, class_name)
-  cmd = "INSERT INTO textbook VALUES (:isb, :na, :au, :cl)"
-  g.conn.execute(text(cmd), isb = isbn, na = name, au = author, cl = class_name)
-  return redirect('/')
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/addDeed', methods=['POST'])
 def addDeed():
   place_name= request.form['place_name']
   user_uid = str(request.form['user_uid'])
   types = request.form['types']
-  # g.conn.execute('INSERT INTO Use VALUES (%s,%s,%s)', place_name, user_uid, types)
-  cmd = "INSERT INTO use VALUES (:pl, :us, :ty)"
-  g.conn.execute(text(cmd), pl = place_name, us = user_uid, ty = types)
-  return redirect('/')
+  try:
+    cmd = "INSERT INTO use VALUES (:pl, :us, :ty)"
+    g.conn.execute(text(cmd), pl = place_name, us = user_uid, ty = types)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/addTake', methods=['POST'])
 def addTake():
   student_uid= request.form['student_uid']
   since = str(request.form['since'])
   class_name = request.form['class_name']
-  # g.conn.execute('INSERT INTO Take VALUES (%s,%s,%s)', student_uid, since, class_name)
-  cmd = 'INSERT INTO take VALUES (:st, :si, :cl)'
-  g.conn.execute(text(cmd), st = student_uid, si = since, cl = class_name)
-  return redirect('/')
+  try:
+    cmd = 'INSERT INTO take VALUES (:st, :si, :cl)'
+    g.conn.execute(text(cmd), st = student_uid, si = since, cl = class_name)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/addTeach', methods=['POST'])
 def addTeach():
   faculty_uid= request.form['faculty_uid']
   since = str(request.form['since'])
   class_name = request.form['class_name']
-  # g.conn.execute('INSERT INTO Teach VALUES (%s,%s,%s)', faculty_uid, since, class_name)
-  cmd = 'INSERT INTO Teach VALUES (:fa, :si, :cl)'
-  g.conn.execute(text(cmd), fa = faculty_uid, si = since, cl = class_name)
-  return redirect('/')
-#with the put method you have to include both request.args and request.form. 
-#pass the character id in the URL and have the new detais in the form. 
+  try:
+    cmd = 'INSERT INTO Teach VALUES (:fa, :si, :cl)'
+    g.conn.execute(text(cmd), fa = faculty_uid, si = since, cl = class_name)
+    print "\ninserted data to table 'characters'"
+    message = 'Insert successfully!'
+  except Exception:
+    message = 'Insertion failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 
 
@@ -1091,12 +1128,17 @@ def updateCharacter():
   blood_type=request.form['blood_type']
   gender=request.form['gender']
   print "\ncollected data from webpage"
+  try:
+    cmd = 'UPDATE characters SET uid =:ui, name =:na, dob=:do, blood_status=:bl, gender=:ge where uid=:ui'
+    g.conn.execute(text(cmd), ui = uid, na = name, do = dob, bl = blood_type, ge = gender)
+    print "\nupdated data to table"
+    message = 'Update successful!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
 
-  # g.conn.execute('INSERT INTO characters VALUES (%s,%s,%s,%s,%s)', uid, name, dob, blood_type, gender)
-  cmd = 'UPDATE characters SET uid =:ui, name =:na, dob=:do, blood_status=:bl, gender=:ge where uid=:ui'
-  g.conn.execute(text(cmd), ui = uid, na = name, do = dob, bl = blood_type, ge = gender)
-  print "\ninserted data to table 'characters'"
-  return redirect('/')
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 #methods include push, put, get. checks for method defined in html.
 @app.route('/updateFaculty', methods=['POST'])
@@ -1104,10 +1146,17 @@ def updateFaculty():
   uid= request.form['uid']
   date_join_hog = str(request.form['date_join_hog'])
   # head_of=request.form['head_of']
+  try:
+    cmd = "UPDATE faculty SET uid=:ui, date_join_hog=:da where uid=:ui "
+    g.conn.execute(text(cmd), ui = uid, da = date_join_hog)
+    print "\nupdated data to table"
+    message = 'Update successful!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
 
-  cmd = "UPDATE faculty SET uid=:ui, date_join_hog=:da where uid=:ui "
-  g.conn.execute(text(cmd), ui = uid, da = date_join_hog)
-  return redirect('/')
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 
 @app.route('/updateStudent', methods=['POST'])
@@ -1116,21 +1165,34 @@ def updateStudent():
   date_join_hog = str(request.form['date_join_hog'])
   pet=request.form['pet']
   house_name=request.form['house_name']
-  # g.conn.execute('INSERT INTO students VALUES (%s,%s,%s,%s)', uid, date_join_hog, pet, house_name)
-  cmd = 'UPDATE students SET uid=:ui, date_join_hog= :da, pet=:pe, house_name=:ho WHERE uid=:ui'
-  g.conn.execute(text(cmd), ui = uid, da = date_join_hog, pe = pet, ho = house_name)
-  return redirect('/')
+  try:
+    cmd = 'UPDATE students SET uid=:ui, date_join_hog= :da, pet=:pe, house_name=:ho WHERE uid=:ui'
+    g.conn.execute(text(cmd), ui = uid, da = date_join_hog, pe = pet, ho = house_name)
+    print "\nupdated data to table"
+    message = 'Update successfully!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/updateClass', methods=['POST'])
 def updateClass():
   name= request.form['name']
   department = request.form['department']
   #classroom_loc=request.form['classroom_loc']
-  
-  # g.conn.execute('INSERT INTO Class VALUES (%s,%s, %s)', name, department, classroom_loc)
-  cmd = "UPDATE class SET name=:na, department=:de where name=:na"
-  g.conn.execute(text(cmd), na = name, de = department)
-  return redirect('/')
+  try:
+    cmd = "UPDATE class SET name=:na, department=:de where name=:na"
+    g.conn.execute(text(cmd), na = name, de = department)
+    print "\nupdated data to table"
+    message = 'Update successfully!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/updateHouse', methods=['POST'])
 def updateHouse():
@@ -1141,11 +1203,17 @@ def updateHouse():
   color= request.form['color']
   #head_uid= request.form['head_uid']
   #classroom_loc=request.form['classroom_loc']
-  
-  # g.conn.execute('INSERT INTO Class VALUES (%s,%s, %s)', name, department, classroom_loc)
-  cmd = "UPDATE Houses SET name=:na, ghost=:gh, founder=:fo, door_guard=:dg, color=:co where name=:na"
-  g.conn.execute(text(cmd), na = name, gh = ghost, fo=founder, dg = door_guard, co=color)
-  return redirect('/')
+  try:
+    cmd = "UPDATE Houses SET name=:na, ghost=:gh, founder=:fo, door_guard=:dg, color=:co where name=:na"
+    g.conn.execute(text(cmd), na = name, gh = ghost, fo=founder, dg = door_guard, co=color)
+    print "\nupdated data to table"
+    message = 'Update successfully!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 
 @app.route('/updatePlace', methods=['POST'])
@@ -1157,19 +1225,34 @@ def updatePlace():
   city=request.form['city']
   country=request.form['country']
   #be_classroom_for=request.form['be_classroom_for']
-  # g.conn.execute('INSERT INTO Places VALUES (%s,%s,%s,%s,%s,%s)', name, street_number, street_name, zippy, city, country)
-  cmd = "UPDATE places set name= :na, street_number = :stnu, street_name= :stna, zip= :zi, city= :ci, country= :co where name= :na"
-  g.conn.execute(text(cmd), na = name, stnu = street_number, stna = street_name, zi = zippy, ci = city, co = country)
-  return redirect('/')
+  try:
+    cmd = "UPDATE places set name= :na, street_number = :stnu, street_name= :stna, zip= :zi, city= :ci, country= :co where name= :na"
+    g.conn.execute(text(cmd), na = name, stnu = street_number, stna = street_name, zi = zippy, ci = city, co = country)
+    print "\nupdated data to table"
+    message = 'Update successfully!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/updateTextbook', methods=['POST'])
 def updateTextbook():
   isbn= request.form['isbn']
   name = request.form['name'] 
   author = request.form['author']
-  cmd = "UPDATE textbook SET isbn=:isb, name=:na, author=:au WHERE isbn=:isb"
-  g.conn.execute(text(cmd), isb = isbn, na = name, au = author)
-  return redirect('/')
+  try:
+    cmd = "UPDATE textbook SET isbn=:isb, name=:na, author=:au WHERE isbn=:isb"
+    g.conn.execute(text(cmd), isb = isbn, na = name, au = author)
+    print "\nupdated data to table"
+    message = 'Update successfully!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/updatePlaysFor', methods=['POST'])
 def updatePlaysFor():
@@ -1178,9 +1261,17 @@ def updatePlaysFor():
   house_name = request.form['house_name'] 
   position = request.form['position']
   player_uid=request.form['player_uid']
-  cmd = "UPDATE plays_for set h_from=:hf, h_to=:ht, house_name=:ho, position=:po where player_uid=:pl"
-  g.conn.execute(text(cmd), hf = h_from, ht = h_to, ho = house_name, po = position, pl = player_uid)
-  return redirect('/')
+  try:
+    cmd = "UPDATE plays_for set h_from=:hf, h_to=:ht, house_name=:ho, position=:po where player_uid=:pl"
+    g.conn.execute(text(cmd), hf = h_from, ht = h_to, ho = house_name, po = position, pl = player_uid)
+    print "\nupdated data to table"
+    message = 'Update successfully!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 
 @app.route('/updateDeed', methods=['POST'])
@@ -1188,27 +1279,51 @@ def updateDeed():
   place_name= request.form['place_name']
   user_uid = str(request.form['user_uid'])
   types = request.form['types']
-  cmd = "UPDATE Use set place_name =:pl, user_uid=:us, type=:ty where user_uid=:us and place_name=:pl"
-  g.conn.execute(text(cmd), pl = place_name, us = user_uid, ty = types)
-  return redirect('/')
+  try:
+    cmd = "UPDATE Use set place_name =:pl, user_uid=:us, type=:ty where user_uid=:us and place_name=:pl"
+    g.conn.execute(text(cmd), pl = place_name, us = user_uid, ty = types)
+    print "\nupdated data to table"
+    message = 'Update successfully!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/updateTake', methods=['POST'])
 def updateTake():
   student_uid= request.form['student_uid']
   since = str(request.form['since'])
   class_name = request.form['class_name']
-  cmd = 'UPDATE Take SET student_uid =:st, since =:si, class_name =:cl WHERE student_uid =:st and class_name=:cl'
-  g.conn.execute(text(cmd), st = student_uid, si = since, cl = class_name)
-  return redirect('/')
+  try:
+    cmd = 'UPDATE Take SET student_uid =:st, since =:si, class_name =:cl WHERE student_uid =:st and class_name=:cl'
+    g.conn.execute(text(cmd), st = student_uid, si = since, cl = class_name)
+    print "\nupdated data to table"
+    message = 'Update successfully!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 @app.route('/updateTeach', methods=['POST'])
 def updateTeach():
   faculty_uid= request.form['faculty_uid']
   since = str(request.form['since'])
   class_name = request.form['class_name']
-  cmd = 'UPDATE Teach set faculty_uid =:fa, since =:si, class_name =:cl where faculty_uid =:fa and class_name =:cl' 
-  g.conn.execute(text(cmd), fa = faculty_uid, si = since, cl = class_name)
-  return redirect('/')
+  try:
+    cmd = 'UPDATE Teach set faculty_uid =:fa, since =:si, class_name =:cl where faculty_uid =:fa and class_name =:cl' 
+    g.conn.execute(text(cmd), fa = faculty_uid, si = since, cl = class_name)
+    print "\nupdated data to table"
+    message = 'Update successfully!'
+  except Exception:
+    message = 'Update failed. Please pay attention to all constraints and make sure that new data does not conflict with existing ones.'
+    print message
+
+  context = dict(ist_msg = message)  
+  return render_template("proj1index.html", **context)
 
 
 

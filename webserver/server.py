@@ -35,10 +35,10 @@ app = Flask(__name__, template_folder=tmpl_dir)
 #
 # For example, if you had username ewu2493, password foobar, then the following line would be:
 #
-#     DATABASEURI = "postgresql://ewu2493:foobar@<IP_OF_POSTGRE_SQL_SERVER>/postgres"
+DATABASEURI = "postgresql://klb2180:6h42a@104.196.175.120/postgres"
 #
 # Swap out the URI below with the URI for the database created in part 2
-DATABASEURI = "sqlite:///test.db"
+DATABASEURI = "postgresql://klb2180:6h42a@104.196.175.120/postgres"
 
 
 #
@@ -67,7 +67,7 @@ engine.execute("""CREATE TABLE IF NOT EXISTS test (
   id serial,
   name text
 );""")
-engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
+# engine.execute("select * from characters;")
 #
 # END SQLITE SETUP CODE
 #
@@ -134,10 +134,10 @@ def index():
   #
   # example of a database query
   #
-  cursor = g.conn.execute("SELECT name FROM test")
+  cursor = g.conn.execute("SELECT * FROM characters;")
   names = []
   for result in cursor:
-    names.append(result['name'])  # can also be accessed using result[0]
+    names.append(result[:8])  # can also be accessed using result[0]
   cursor.close()
 
   #
@@ -183,6 +183,9 @@ def index():
 # notice that the functio name is another() rather than index()
 # the functions for each app.route needs to have different names
 #
+
+#you can use scp. This is to copy a file: scp -r project1 clic.cs.columbia.edu:~/
+#or from github, from your repository: 
 @app.route('/another')
 def another():
   return render_template("anotherfile.html")
@@ -192,9 +195,32 @@ def another():
 @app.route('/add', methods=['POST'])
 def add():
   name = request.form['name']
-  g.conn.execute('INSERT INTO test VALUES (NULL, ?)', name)
+  g.conn.execute('INSERT INTO characters VALUES (%s)', name)
   return redirect('/')
 
+# #going to modify the below to select data from the database
+# # Example of adding new data to the database
+# @app.route('/select', methods=['POST'])
+# def select():
+#   name = request.form['name']
+#   g.conn.execute('INSERT INTO test VALUES (NULL, ?)', name)
+#   return redirect('/')
+
+#   #going to modify the below to delete data from the database
+#   # Example of adding new data to the database
+# @app.route('/delete', methods=['POST'])
+# def delete():
+#   name = request.form['name']
+#   g.conn.execute('INSERT INTO test VALUES (NULL, ?)', name)
+#   return redirect('/')
+
+#   #going to modify the below to update values in the database:
+#   # Example of adding new data to the database
+# @app.route('/update', methods=['POST'])
+# def update():
+#   name = request.form['name']
+#   g.conn.execute('INSERT INTO test VALUES (NULL, ?)', name)
+#   return redirect('/')
 
 @app.route('/login')
 def login():
